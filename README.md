@@ -16,8 +16,7 @@ It will check :
 - Go back to your sheet, on the "Data" tab.
 - At the top you should have a new menu called "Agent checker". Open it and then open Check begin stats.
 - The first time it might ask some authorizations to access the sheet data
-- When prompted, past the list of the agents that registered on fevgames, separated bu spaces (for example : Agent01 Agent02 Agent03)
-
+- When prompted, past the list of the agents that are registered on fevgames, separated by spaces (for example : Agent01 Agent02 Agent03)
 
 ## Other
 This script will not interfer with fevgame website. It don't send data anywhere.
