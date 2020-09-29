@@ -14,7 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with IngressFSAgentChecker.  If not, see <http://www.gnu.org/licenses/>.
 
-var ss = SpreadsheetApp.getActiveSpreadsheet();
+let ss = SpreadsheetApp.getActiveSpreadsheet();
 
 function onInstall() {
     onOpen();
@@ -27,17 +27,17 @@ function onOpen() {
 }
 
 function beginStats() {
-    var sheet = ss.getActiveSheet();
-    var agentsWithoutStats = [];
-    var nonRegisteredAgents = [];
-    var agentsWithBeginStats = sheet.getRange("E:E").getDisplayValues();
-    var registeredAgents = [];
+    let sheet = ss.getActiveSheet();
+    let agentsWithoutStats = [];
+    let nonRegisteredAgents = [];
+    let registeredAgents = [];
+    let agentsWithBeginStats = sheet.getRange("E:E").getDisplayValues();
 
-    var names = Browser.inputBox("Agent list", "Fill with the agent list, separated with spaces. For example : Agent01 Agent02 Agent03", Browser.Buttons.OK);
+    let names = Browser.inputBox("Agent list", "Fill with the agent list, separated with spaces. For example : Agent01 Agent02 Agent03", Browser.Buttons.OK);
     registeredAgents = names.split(" ");
 
     registeredAgents.forEach(registeredAgent => {
-        var index = agentsWithBeginStats.findIndex(agent => agent.length > 0 ? agent[0].toLowerCase() == registeredAgent.toLowerCase() : false);
+        let index = agentsWithBeginStats.findIndex(agent => agent.length > 0 ? agent[0].toLowerCase() == registeredAgent.toLowerCase() : false);
         if (index == -1) {
             agentsWithoutStats.push(registeredAgent);
         }
@@ -45,7 +45,7 @@ function beginStats() {
     agentsWithBeginStats.shift(); //remove column title
     agentsWithBeginStats.forEach(agentWithBeginStats => {
         if(agentWithBeginStats.length > 0) {
-            var index = registeredAgents.findIndex(registeredAgent => registeredAgent.toLowerCase() == agentWithBeginStats[0].toLowerCase());
+            let index = registeredAgents.findIndex(registeredAgent => registeredAgent.toLowerCase() == agentWithBeginStats[0].toLowerCase());
             if (index == -1 && typeof agentWithBeginStats[0] === "string" && agentWithBeginStats[0] !== "") {
                 nonRegisteredAgents.push(agentWithBeginStats[0]);
             }
@@ -56,14 +56,14 @@ function beginStats() {
 }
 
 function endStats() {
-    var sheet = ss.getActiveSheet();
-    var agentNameCol = sheet.getRange("E:E").getDisplayValues();
-    var endLevelCol = sheet.getRange("I:I").getDisplayValues();
-    var agentWithoutEndStats = [];
-    for (var i = 1; i < agentNameCol.length; i++) {
-        var agentName = agentNameCol[i];
+    let sheet = ss.getActiveSheet();
+    let agentNameCol = sheet.getRange("E:E").getDisplayValues();
+    let endLevelCol = sheet.getRange("I:I").getDisplayValues();
+    let agentWithoutEndStats = [];
+    for (let i = 1; i < agentNameCol.length; i++) {
+        let agentName = agentNameCol[i];
         if (agentName && agentName.length > 0 && typeof agentName[0] === "string" && agentName[0] !== "") {
-            var agentEndLevel = endLevelCol[i];
+            let agentEndLevel = endLevelCol[i];
             if (!(agentEndLevel > 0 && agentEndLevel < 17)) {
                 agentWithoutEndStats.push(agentName);
             }
