@@ -58,7 +58,7 @@ function beginStats() {
 function endStats() {
     let sheet = ss.getActiveSheet();
     let agentNameCol = sheet.getRange("E:E").getDisplayValues();
-    let endLevelCol = sheet.getRange("I:I").getDisplayValues();
+    let endLevelCol = sheet.getRange("H:H").getDisplayValues();
     let agentWithoutEndStats = [];
     for (let i = 1; i < agentNameCol.length; i++) {
         let agentName = agentNameCol[i];
