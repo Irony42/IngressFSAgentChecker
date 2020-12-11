@@ -39,7 +39,7 @@ function beginStats() {
     registeredAgents.forEach(registeredAgent => {
         let index = agentsWithBeginStats.findIndex(agent => agent.length > 0 ? agent[0].toLowerCase() == registeredAgent.toLowerCase() : false);
         if (index == -1) {
-            agentsWithoutStats.push(registeredAgent);
+            agentsWithoutStats.push("@" + registeredAgent);
         }
     })
     agentsWithBeginStats.shift(); //remove column title
@@ -65,7 +65,7 @@ function endStats() {
         if (agentName && agentName.length > 0 && typeof agentName[0] === "string" && agentName[0] !== "") {
             let agentEndLevel = endLevelCol[i];
             if (!(agentEndLevel > 0 && agentEndLevel < 17)) {
-                agentWithoutEndStats.push(agentName);
+                agentWithoutEndStats.push("@" + agentName);
             }
         }
     }
