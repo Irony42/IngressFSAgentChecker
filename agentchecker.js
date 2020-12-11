@@ -44,7 +44,7 @@ function beginStats() {
     })
     agentsWithBeginStats.shift(); //remove column title
     agentsWithBeginStats.forEach(agentWithBeginStats => {
-        if(agentWithBeginStats.length > 0) {
+        if (agentWithBeginStats.length > 0) {
             let index = registeredAgents.findIndex(registeredAgent => registeredAgent.toLowerCase() == agentWithBeginStats[0].toLowerCase());
             if (index == -1 && typeof agentWithBeginStats[0] === "string" && agentWithBeginStats[0] !== "") {
                 nonRegisteredAgents.push(agentWithBeginStats[0]);
